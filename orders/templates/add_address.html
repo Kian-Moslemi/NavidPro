@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>فرم ادرس </title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: white;
+      direction: rtl;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 40px;
+    }
+
+    .headline {
+      font-size: 64px;
+      font-weight: bold;
+      color: #242155;
+      margin-bottom: 20px;
+    }
+
+    .headline .red {
+      color: #627bb1;
+      text-shadow: 2px 2px 8px rgba(49, 91, 182, 0.5);
+    }
+
+    .form-container {
+      background-color: #d3dee0;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(63, 75, 241, 0.452);
+      width: 400px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #627bb1;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: #627bb1;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #242155;
+      outline: none;
+    }
+
+    .form-group textarea {
+      resize: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #242155;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #4b4697;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="headline">navid <span class="red">pro</span></div>
+  <div class="form-container">
+    <h2>ثبت ادرس جدید</h2>
+    <form method="POST">
+    <div class="form-group">
+      <label for="title">عنوان ادرس</label>
+      {{form.title}}
+    </div>
+    <div class="form-group">
+      <label for="address_line">آدرس</label>
+        {{form.address_line}}
+    </div>
+    <button class="submit-btn" type="submit">ثبت ادرس جدید</button>
+    {% csrf_token %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>سبد خرید</title>
+  <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #242155;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #7eb2e2;
+}
+
+body {
+  font-family: Vazirmatn, sans-serif;
+  direction: rtl;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.cart {
+  background: white;
+  color: #312d79;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 900px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #3f3c7c;
+  padding: 20px;
+}
+
+.total {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* -------------------- بخش پرداخت -------------------- */
+.checkout {
+  background: white;
+  color: #312d79;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 900px;
+  margin: 30px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.checkout h2 {
+  margin-bottom: 20px;
+}
+
+.discount-box {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.checkout-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: Vazirmatn, sans-serif;
+  font-size: 14px;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-submit {
+  grid-column: span 2;
+  text-align: left;
+}
+
+.form-submit button {
+  background-color: #242155;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-submit button:hover {
+  background-color: #3c3a70;
+}
+
+/* -------------------- فوتر -------------------- */
+.footer {
+  background-color: #242155;
+  border-radius: 5px;
+  color: white;
+  padding: 40px 20px;
+  direction: rtl;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-col {
+  flex: 1 1 200px;
+  color: white;
+}
+
+.footer-col h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #8ed7f3;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer-col ul li i {
+  margin-left: 8px;
+  color: #8ed7f3;
+}
+
+.footer-col ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-col ul li a:hover {
+  color: #8ed7f3;
+}
+
+.logo-col {
+  text-align: center;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a.icon {
+  display: inline-block;
+  margin: 5px;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background-color: #8ed7f3;
+  color: white;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.social-icons a.icon:hover {
+  background-color: #242155;
+}
+
+.go-top {
+  text-align: left;
+  margin-top: 20px;
+  padding-left: 30px;
+}
+
+.go-top a {
+  background-color: #8ed7f3;
+  color: black;
+  padding: 10px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.go-top a:hover {
+  background-color: #8ed7f3;
+}
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-right">
+      <a href="#" class="nav-item">خانه</a>
+      <a href="#" class="nav-item">سبد خرید</a>
+      <a href="#" class="nav-item">درباره ما</a>
+      <a href="#" class="nav-item">تماس با ما</a>
+      <a href="#" class="nav-item">ثبت نام / ورود</a>
+    </div>
+</header>
+
+<br><br>
+
+<div class="cart">
+  <h2>🛒 سبد خرید</h2>
+  <div id="cart-items">
+    <p class="empty-cart">سبد خرید شما خالی است</p>
+  </div>
+  <div class="total" id="total">جمع کل: ۰ تومان</div>
+</div>
+
+<!-- فرم پرداخت -->
+<div class="checkout">
+  <h2>💳 پرداخت</h2>
+
+  <div class="discount-box">
+    <label>
+      <input type="checkbox"> کد تخفیف دارید؟ برای نوشتن کد اینجا کلیک کنید
+    </label>
+  </div>
+
+  <form id="checkout-form" class="checkout-form">
+    <div class="form-group">
+      <label for="fname">نام *</label>
+      <input type="text" id="fname" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lname">نام خانوادگی *</label>
+      <input type="text" id="lname" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">تلفن *</label>
+      <input type="tel" id="phone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">ایمیل</label>
+      <input type="email" id="email">
+    </div>
+
+    <div class="form-group">
+      <label for="postal">کد پستی</label>
+      <input type="text" id="postal">
+    </div>
+
+    <div class="form-group full-width">
+      <label for="address">آدرس</label>
+      <textarea id="address" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="branch">انتخاب شعبه</label>
+      <select id="branch">
+        <option value="">انتخاب کنید...</option>
+        <option value="go-hardasht">شعبه گوهردشت</option>
+        <option value="azimiyeh">شعبه عظیمیه</option>
+      </select>
+    </div>
+
+    <div class="form-group full-width">
+      <label for="notes">توضیحات سفارش (اختیاری)</label>
+      <textarea id="notes" rows="3" placeholder="یادداشت‌ها درباره سفارش شما"></textarea>
+    </div>
+
+    <div class="form-submit">
+      <button type="submit">ثبت سفارش</button>
+    </div>
+  </form>
+</div>
+
+<br><br>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>دسترسی سریع</h3>
+      <ul>
+        <li><a href="#">منو</a></li>
+        <li><a href="#">درباره ما</a></li>
+        <li><a href="#">تماس با ما</a></li>
+        <li><a href="#">سوالات متداول</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>تماس با ما</h3>
+      <ul>
+        <li><i class="fas fa-phone"></i> ۰۲۶۳۲۵۷۲۷۲۳</li>
+        <li><i class="fas fa-mobile-alt"></i> ۰۹۰۰۴۶۲۱۵۷۲</li>
+        <li><i class="fas fa-map-marker-alt"></i> شعبه گوهردشت: نبش خیابان یازدهم، رستاخیز</li>
+        <li><i class="fas fa-map-marker-alt"></i> شعبه عظیمیه: پایین‌تر از میدان اسبی، بین خیام و ارکیده</li>
+      </ul>
+    </div>
+
+    <div class="footer-col logo-col">
+      <p>نوید پرو فقط یک پروتئینی نیست.</p>
+      <p>ما را در شبکه‌های اجتماعی دنبال کنید</p>
+      <div class="social-icons">
+        <a href="https://instagram.com" target="_blank" class="icon insta"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/" target="_blank" class="icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/" target="_blank" class="icon telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.aparat.com/" target="_blank" class="icon aparat"><i class="fas fa-play-circle"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="go-top">
+    <a href="#">⬆</a>
+  </div>
+</footer>
+
+<script>
+  // مدیریت سبد خرید
+  let cart = [];
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    renderCart();
+  }
+
+  function renderCart() {
+    const cartItemsDiv = document.getElementById('cart-items');
+    cartItemsDiv.innerHTML = ''; 
+
+    if (cart.length === 0) {
+      cartItemsDiv.innerHTML = '<p class="empty-cart">سبد خرید شما خالی است</p>';
+    } else {
+      cart.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `<span>${item.name}</span><span>${item.price.toLocaleString()} تومان</span>`;
+        cartItemsDiv.appendChild(div);
+      });
+    }
+
+    const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+    document.getElementById('total').innerText = `جمع کل: ${totalPrice.toLocaleString()} تومان`;
+  }
+
+  // ارسال فرم پرداخت به سرور
+  document.getElementById("checkout-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = {
+      fname: document.getElementById("fname").value,
+      lname: document.getElementById("lname").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      postal: document.getElementById("postal").value,
+      address: document.getElementById("address").value,
+      branch: document.getElementById("branch").value,
+      notes: document.getElementById("notes").value
+    };
+
+    try {
+      const response = await fetch("/submit-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        alert("سفارش شما با موفقیت ثبت شد ✅");
+        document.getElementById("checkout-form").reset();
+      } else {
+        alert("مشکلی در ثبت سفارش پیش آمد ❌");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("خطا در اتصال به سرور ❌");
+    }
+  });
+</script>
+
+</body>
+</html>

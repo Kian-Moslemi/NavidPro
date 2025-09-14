@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load i18n %}
+
+{% block content %}
+    <h1>سبد محصول شما</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">عکس</th>
+                <th scope="col">محصول</th>
+                <th scope="col">تعداد</th>
+                <th scope="col">حذف</th>
+                <th scope="col">قیمت واحد</th>
+                <th scope="col">قیمت</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+              {% with product=item.product  %}
+                <tr>
+                    <td>
+                        
+                        {% comment %}
+                                    <a href="{% url 'product_detail' product.id %}">
+                        {% endcomment %}
+                            <img class="rounded-lg shadow" src="{{product.image.url}}" height="100" width="100" alt="">
+                        </a>
+                    </td>
+                    <td>{{product.name}}</td>
+                    <td>
+                        <form action="{% url 'cart_add' product.id %}" method="POST">
+                            {{item.update_quantity_form.quantity}}
+                            {{item.update_quantity_form.override}}
+                            <input class="btn btn-primary" type="submit" value="ویرایش">
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{% url 'cart_remove' product.id %}" method="POST">
+                            <button type="submit" class="btn"><i class="fas fa-trash"></i></button>
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                    <td>{{item.price|intcomma}}</td>
+                    <td>{{item.total_price|intcomma}}</td>
+                </tr>
+              {% endwith %}
+            {% endfor %}
+            <tr>
+                <td>مجموع</td>
+                <td colspan="4"></td>
+                <td>{{cart.get_total_price|intcomma}}</td>
+            </tr>
+                
+        </tbody>
+    </table>
+    <hr>
+    <p>
+        <a href="{% url 'home' %}" class="btn btn-primary">بازگشت به خانه</a>
+        <a href="{% url 'order' %}" class="btn btn-success">ثبت سفارش</a>
+    </p>
+<br><br><br><br> 
+                 
+{% endblock content %}
+    

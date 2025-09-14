@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main class="main-content">
+    <div class="image-box">
+      <img src="{% static 'picture/5.png' %}" alt="Navid Pro Shop" />
+    </div>
+    <div class="text-box">
+      <h1><span class="red">نوید پرو</span> NAVID PRO</h1>
+      <p class="tagline">نویدپرو فقط یه پروتئینی نیست</p>
+    </div>
+  </main>
+
+  <section class="menu-section">
+  <h2 class="menu-title">منو <span class="red">نوید پرو</span></h2>
+  <p class="menu-subtitle">لذت واقعی ساندویچ‌های خوشمزه و متنوع</p>
+
+  <div class="menu-grid">
+    <a href="{% url 'drinks' %}" class="menu-card">
+      <img src="{% static 'picture/6.png' %}" alt="نوشیدنی‌ها">
+      <div class="menu-label">نوشیدنی ها</div>
+    </a>
+
+    <a href="{% url 'hotsandwich' %}" class="menu-card">
+      <img src="{% static 'picture/9.png' %}" alt="ساندویچ گرم">
+      <div class="menu-label">ساندویچ گرم</div>
+    </a>
+
+    <a href="{% url 'coldsandwich' %}" class="menu-card">
+      <img src="{% static 'picture/7.png' %}" alt="ساندویج سرد">
+      <div class="menu-label">ساندویچ سرد</div>
+    </a>
+    
+  </div>
+</section>
+<section class="promo-section">
+  <div class="promo-box">
+    <img src="{% static 'picture/11.png' %}" alt="تصویر تبلیغاتی">
+
+    <div class="promo-text">
+      <h2>یک بار امتحان کنی پشیمون نمیشی</h2>
+      <p>هر ساندویچ ما یک شخصیت دارد</p>
+    </div>
+
+    <div class="promo-dot"></div>
+  </div>
+</section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+{% endblock content %}

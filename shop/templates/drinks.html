@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DRINKS</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  color: #242155;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 35px;
+}
+
+
+.order-button {
+  display: flex;
+  justify-content: center;
+  margin-right: 1200px;
+  margin-top: -20px;
+}
+
+.order-button a {
+  background-color:#314daa;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.order-button a:hover {
+  background-color:  #4ac1d6;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 63px;
+  justify-content: center;
+  padding: 5px;
+  margin-top: -80px;
+}
+.container img{
+  width: 300px;
+  height: auto;
+  border: 3px solid navy;
+  border-radius: 5px;
+  margin-left: 10px; 
+  margin-right: 20px;
+}
+.container-des {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 55px;
+  justify-content: center;
+  padding: 5px;
+}
+
+.box {
+  width: calc(25% - 20px);
+  border: 1px solid white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 100px;
+  background-color:#242155;
+  box-sizing: border-box;
+  height: 300px;
+  width: 400px;
+  gap: 20px;
+}
+
+.box:hover {
+  box-shadow: 0 32px 40px rgba(0,0,0,0.2);
+}
+
+.discription {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.desc-box {
+  background-color: #242155;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  width: 300px;
+  height: 120px;
+}
+
+.size-selector {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.size-option {
+  flex: 1;
+  margin: 0 5px;
+  padding: 6px 0;
+  background-color: #444;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.size-option:hover {
+  background-color: #223679;
+  color: white;
+}
+
+.size-option.selected {
+  background-color: #314daa;
+  color: white;
+}
+
+.select-btn {
+  background-color:#314daa;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  width: 100%;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.select-btn:hover {
+  background-color:#223679;
+}
+
+
+@media (max-width: 992px) {
+  .box {
+    width: calc(50% - 20px);
+  }
+}
+
+
+@media (max-width: 576px) {
+  .box {
+    width: 100%;
+  }
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 3px;
+}
+.item{
+    padding: 8px;
+    border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+
+<div class="button">
+  <p>نوشیدنی‌ها</p>
+</div>
+
+<br><br><br><br>
+<div class="grid-container">  
+
+  {% for product in products %}
+    <form method="POST" action="{% url 'cart_add' product.id %}">
+    <div class="item">
+      <div class="container">
+        <img src="{{product.image.url}}" alt="" >
+          <p class="discription"></p>
+      </div>
+      <div class="container-des">
+        <div class="desc-box">
+          <p>{{product.name}}</p>
+          <p>{{product.price|intcomma}}تومان</p>
+          <div class="size-selector">
+            <div class="size-option selected">کوچک</div>
+            <div class="size-option">متوسط</div>
+            <div class="size-option">بزرگ</div>
+                {{form.quantity}}
+                {{form.override}}
+          </div>        
+          <button class="select-btn" type="submit">اضافه کردن به سبد خرید</button>
+            {% csrf_token %}
+          </form>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+<script>
+
+document.querySelectorAll('.size-selector').forEach(group => {
+  group.querySelectorAll('.size-option').forEach(option => {
+    option.addEventListener('click', () => {
+      group.querySelectorAll('.size-option').forEach(o => o.classList.remove('selected'));
+      option.classList.add('selected');
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>  
+{% endblock content %}
+  

@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avid-pro-call</title>
+    <style>
+        *{margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: 'Vazirmatn', sans-serif;
+        }
+        body{
+            background-color: white;
+            color: #f1f1f1; ;
+            line-height: normal;
+        }
+        .c{
+            background-color: #bccace;
+            border: 1px solid #a8e9f1;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 900px;
+            margin: 40px auto;
+            color: rgb(30, 29, 97);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            text-align: right;
+        }
+        .CT{
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .CI{
+            display: block;
+            max-width: 400px;
+            height: auto;
+            margin: 0 auto 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .Cin{
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .CE p ,
+        .social p{ 
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+
+        }
+        .highlight{
+            color: #3235f3;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c">
+        <h2 class="CT">تماس با ما</h2>
+        <img src="{% static 'picture/4.png' %}" alt="تماس" class="CI" >
+        <p style = "text-align: right; direction:rtl;" class="Cin">
+            ما در نوید پرو همیشه در تلاشیم تا بهترین خدمات را به شما ارایه دهیم. اگر سوال , نظر یا پیشنهادی دارید یا به هر نوع کمکی نیاز دارید, خوشحال میشویم که با ما تماس بگیرید.
+        </p>
+        <div class="CE">
+            <p><strong>اطلاعات تماس</strong></p>
+            <p><strong>آدرس نوید پرو:</strong>عظیمیه پایین تر از میدان اسبی بین خیابان خیام و اریکه</p>
+            <p><strong>تلفن:</strong><span class="highlight">09367258734</span></p>
+            <p><strong>ایمیل:</strong><span class="highlight">khodadoostnavid@gmail.com</span></p>
+            <p><strong>ساعات کاری:</strong>همه روزهای هفته از 10 صبح تا 10 شب</p>
+        </div>
+        <div class="social">
+            <p><strong>شبکه های اجتماعی:</strong></p>
+            <p>ما را در شبکه های اجتماعی دنبال کنید و از آخرین اخبار و بروزرسانی ها مطلع شوید.</p>
+            <p class="highlight">navid_prok</p>
+        </div>
+    </div>
+    
+</body>
+</html>
